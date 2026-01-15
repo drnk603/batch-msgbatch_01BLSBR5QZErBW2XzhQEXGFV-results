@@ -109,11 +109,11 @@
       const href = link.getAttribute('href');
       if (!href) return;
 
-      const normPath = href.replace(/^.//, '').replace(/^/+/, '/');
-      const currentPath = path.replace(/^/+/, '/');
+      const normPath = href.replace(/^.\//, '').replace(/^\/+/, '/');
+      const currentPath = path.replace(/^\/+/, '/');
 
       if (normPath === '/' || normPath === '/index.html') {
-        if (currentPath === '/' || currentPath === '/index.html' || currentPath.match(//index.html$/)) {
+        if (currentPath === '/' || currentPath === '/index.html' || currentPath.match(/\/index.html$/)) {
           link.setAttribute('aria-current', 'page');
           link.classList.add('active');
         }
@@ -125,7 +125,7 @@
   }
 
   function initSmoothScroll() {
-    const isHomepage = location.pathname === '/' || location.pathname === '/index.html' || location.pathname.match(//index.html$/);
+    const isHomepage = location.pathname === '/' || location.pathname === '/index.html' || location.pathname.match(/\/index.html$/);
     const header = document.querySelector('.l-header, .navbar');
 
     function getOffset() {
